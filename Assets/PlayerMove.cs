@@ -2,29 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public float Speed;
-	
-	// Update is called once per frame
+    public float Jump;
+    public bool Jumpable = true;
+
 	void Update ()
     {
-        Vector3 cameraPosition = transform.position;
-        cameraPosition.z = -10;
-        Camera.main.transform.position = cameraPosition;
-
-        Vector2 velocity = new Vector2();
-
-        if (Input.GetKeyDown(KeyCode.A))
+       
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            velocity.x = -Speed;
+            transform.Translate(Speed * Time.deltaTime, 0, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-            velocity.x = Speed;
+            transform.Translate(-Speed * Time.deltaTime, 0, 0);
         }
 
 
-    }
+	}
 }
